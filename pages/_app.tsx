@@ -6,12 +6,12 @@ import { useRouter } from "next/router"
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
-  console.log(router.pathname)
-
   const getBgImage = () => {
     switch (router.pathname) {
       case "/":
         return "bg-home-sm md:bg-home-md xm:bg-home-lg"
+      case "/destination":
+        return "bg-destination-sm md:bg-destination-md xm:bg-destination-lg"
       default:
         return "bg-none"
     }
@@ -21,7 +21,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       className={`overflow-x-hidden relative min-h-screen font-sans text-base bg-cinder text-white ${getBgImage()} bg-no-repeat bg-cover bg-center`}
     >
       <Navigation />
-      <Component {...pageProps} />
+      <div className="max-w-[69.375rem] min-h-80vh flex items-center w-[87%] mx-auto">
+        <Component {...pageProps} />
+      </div>
     </div>
   )
 }

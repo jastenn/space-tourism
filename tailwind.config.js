@@ -50,6 +50,13 @@ module.exports = {
         "crew-md": "url('/image/crew/background-crew-tablet.jpg')",
         "crew-sm": "url('/image/crew/background-crew-mobile.jpg')",
 
+        "destination-lg":
+          "url('/image/destination/background-destination-desktop.jpg')",
+        "destination-md":
+          "url('/image/destination/background-destination-tablet.jpg')",
+        "destination-sm":
+          "url('/image/destination/background-destination-mobile.jpg')",
+
         "home-lg": "url('/image/home/background-home-desktop.jpg')",
         "home-md": "url('/image/home/background-home-tablet.jpg')",
         "home-sm": "url('/image/home/background-home-mobile.jpg')",
@@ -57,6 +64,12 @@ module.exports = {
       ringWidth: {
         20: "88px",
         15: "48px",
+      },
+      letterSpacing: {
+        widest: ".2em",
+      },
+      lineHeight: {
+        relaxed: "1.7",
       },
     },
   },
