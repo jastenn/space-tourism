@@ -4,7 +4,7 @@
 
 @layer utilities {
   .glass-bg {
-    @apply bg-white/5;
+    @apply bg-black/75;
   }
 
   @supports (backdrop-filter: blur(11.3px)) {

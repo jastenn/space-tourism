@@ -16,8 +16,9 @@ module.exports = {
       "3xl": "1.75rem", // H5
       "4xl": "2rem", // H4
       "5xl": "3.5rem", // H3
-      "6xl": "6.25rem", // H2
-      "7xl": "9.375rem", // H1
+      "7xl": "5rem", // H2
+      "8xl": "6.25rem", // H1(mobile)
+      "12xl": "9.375rem", // H1
     },
     fontWeight: {
       ...fontWeight,
@@ -43,6 +44,19 @@ module.exports = {
       colors: {
         cinder: "#0B0D17",
         fog: "#D0D6F9",
+      },
+      backgroundImage: {
+        "crew-lg": "url('/image/crew/background-crew-desktop.jpg')",
+        "crew-md": "url('/image/crew/background-crew-tablet.jpg')",
+        "crew-sm": "url('/image/crew/background-crew-mobile.jpg')",
+
+        "home-lg": "url('/image/home/background-home-desktop.jpg')",
+        "home-md": "url('/image/home/background-home-tablet.jpg')",
+        "home-sm": "url('/image/home/background-home-mobile.jpg')",
+      },
+      ringWidth: {
+        20: "88px",
+        15: "48px",
       },
     },
   },
