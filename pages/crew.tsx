@@ -28,52 +28,55 @@ const Crew = ({ crews }: CrewProps) => {
           </span>{" "}
           Meet your crew
         </h3>
-        <div className="md:flex flex-col">
-          <div className="relative h-56 w-full mb-8 after:content-[''] after:w-full after:h-[1px] after:bg-white/20 after:absolute after:bottom-0 after:inset-x-0 md:order-3 md:after:hidden md:mb-0 md:h-[33.25rem]">
+        <div className="md:flex md:flex-col xm:flex-row xm:item-center xm:justify-between xm:gap-8">
+          <div className="relative h-56 w-full mb-8 after:content-[''] after:w-full after:h-[1px] after:bg-white/20 after:absolute after:bottom-0 after:inset-x-0 md:order-3 md:after:hidden md:mb-0 md:h-[33.25rem] xm:mb-0 xm:after:block xm:w-40%">
             <Image
               src={crews[selectedIdx].images.png}
+              sizes="222 370px 575"
               layout="fill"
               objectFit="contain"
               alt={crews[selectedIdx].name}
             />
           </div>
-          <Tab.Group onChange={tabChangeHandler}>
-            <Tab.List className="flex gap-4 justify-center mb-8 md:order-2 md:mb-10">
-              {crews.map((crew) => (
-                <Tab key={crew.name} as={Fragment}>
-                  {({ selected }) => (
-                    <button
-                      className={`
-                    ${selected ? "bg-white" : "bg-white/20"}
-                    aspect-square h-[10px]  rounded-full
+          <div className="w-full md:flex md:flex-col md:mb-10 xm:max-w-[unset] xm:justify-center xm:mb-0 xm:w-full">
+            <Tab.Group onChange={tabChangeHandler}>
+              <Tab.List className="flex gap-4 justify-center mb-8 md:order-2 md:mb-0 xm:justify-start xm:gap-6 xm:mt-20">
+                {crews.map((crew) => (
+                  <Tab key={crew.name} as={Fragment}>
+                    {({ selected }) => (
+                      <button
+                        className={`
+                    ${selected ? "!bg-white" : "bg-white/20"}
+                    aspect-square h-[.625rem]  rounded-full xm:h-[.9375rem]
                     hover:bg-white/50 transition-colors
                     `}
+                      >
+                        <div className="sr-only">{crew.name}</div>
+                      </button>
+                    )}
+                  </Tab>
+                ))}
+              </Tab.List>
+              <Tab.Panels className="mb-8">
+                {crews.map((crew) => (
+                  <Tab.Panel key={crew.name}>
+                    <div
+                      aria-label="role"
+                      className="font-serif uppercase text-white/50 mb-2 md:text-2xl"
                     >
-                      <div className="sr-only">{crew.name}</div>
-                    </button>
-                  )}
-                </Tab>
-              ))}
-            </Tab.List>
-            <Tab.Panels className="mb-8">
-              {crews.map((crew) => (
-                <Tab.Panel key={crew.name}>
-                  <div
-                    aria-label="role"
-                    className="font-serif uppercase text-white/50 mb-2 md:text-2xl"
-                  >
-                    {crew.role}
-                  </div>
-                  <h1 className="font-serif text-3xl uppercase mb-4 md:text-[2.5rem]">
-                    {crew.name}
-                  </h1>
-                  <p className="text-fog text-[.9375rem] md:text-base">
-                    {crew.bio}
-                  </p>
-                </Tab.Panel>
-              ))}
-            </Tab.Panels>
-          </Tab.Group>
+                      {crew.role}
+                    </div>
+                    <h1 className="font-serif text-3xl uppercase mb-6 md:text-[2.5rem] xm:text-5xl leading-none">
+                      {crew.name}
+                    </h1>
+                    <p className="max-w-[27.75rem] mx-auto text-fog text-[.9375rem] md:text-base leading-relaxed xm:mx-0">
+                      {crew.bio}
+                    </p>
+                  </Tab.Panel>
+                ))}
+              </Tab.Panels>
+            </Tab.Group>
+          </div>
         </div>
       </article>
     </main>
