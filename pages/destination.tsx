@@ -50,7 +50,6 @@ const Destination: NextPage<destinationProps> = ({ destinations }) => {
               src={destinations[destination.idx].images.png}
               alt={destinations[destination.idx].name}
               layout="fill"
-              priority
             />
           </div>
           <div className="xm:max-w-[27.81rem]">
