@@ -61,6 +61,9 @@ module.exports = {
         "home-md": "url('/image/home/background-home-tablet.jpg')",
         "home-sm": "url('/image/home/background-home-mobile.jpg')",
       },
+      spacing: {
+        15: "3.75rem",
+      },
       ringWidth: {
         20: "88px",
         15: "48px",
