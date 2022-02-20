@@ -7,17 +7,12 @@ import React, {
   useState,
 } from "react"
 
-import { DestinationContext } from "../context/DestinationContextProvider"
-
 import minTwoDigitInt from "../utils/minTwoDigitInt"
 import { useRouter } from "next/router"
 
-import IconClose from "../assets/svg/icon-close.svg"
-import IconMenu from "../assets/svg/icon-hamburger.svg"
 import Logo from "../assets/svg/logo.svg"
 
 import Link from "next/link"
-import { Menu } from "@headlessui/react"
 import { CSSTransition } from "react-transition-group"
 import { useFocusWithin } from "@react-aria/interactions"
 
@@ -56,14 +51,13 @@ const Navigation: FC<NavigationProps> = ({ navItems = defaultNavItems }) => {
       setOpen(false)
     },
   })
-  const { destination } = useContext(DestinationContext)
 
   const [open, setOpen] = useState(false)
 
   const closeBtnRef = useRef<HTMLButtonElement>(null)
 
   const getMarkerActiveClass = (href: string) =>
-    router.asPath === href ? "!opacity-100" : "opacity-0"
+    router.pathname === href ? "!opacity-100" : "opacity-0"
 
   const toggleNav = () => {
     setOpen((prev) => !prev)
@@ -71,12 +65,6 @@ const Navigation: FC<NavigationProps> = ({ navItems = defaultNavItems }) => {
 
   const navigateHandler = () => {
     setOpen(false)
-  }
-
-  const addQueryParams = (route: string) => {
-    if (route === "/" || !destination) return route
-
-    return route + "?destination=" + destination.name
   }
 
   useEffect(() => {
@@ -143,7 +131,7 @@ const Navigation: FC<NavigationProps> = ({ navItems = defaultNavItems }) => {
             <ul className="flex gap-8 flex-col pl-8 md:flex-row mt-28 md:mt-0 md:gap-9 md:pl-10 xm:ml-7 lg:ml-14 xl:ml-20">
               {navItems.map((navItem, idx) => (
                 <li key={navItem.name} className="relative list-none md:py-9">
-                  <Link href={addQueryParams(navItem.url)}>
+                  <Link href={navItem.url}>
                     <a
                       onClick={navigateHandler}
                       className="peer focus:outline-none font-sans-condensed text-base pl-6 inline-block uppercase tracking-widest md:pl-0 md:text-sm xm:text-base xm:flex"

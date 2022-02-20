@@ -1,9 +1,3 @@
-import { dirname, join } from "path"
-import { readFile } from "fs/promises"
-import { fileURLToPath } from "url"
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-
 import React, { useState, Fragment, useContext } from "react"
 import type { Destination } from "../types"
 
@@ -11,8 +5,8 @@ import Image from "next/image"
 
 import { Tab, Transition } from "@headlessui/react"
 import { GetStaticProps, NextPage } from "next"
-import { DestinationContext } from "../context/DestinationContextProvider"
 import { useRouter } from "next/router"
+import getData from "../utils/getData"
 
 interface destinationProps {
   destinations: Destination[]
@@ -20,17 +14,10 @@ interface destinationProps {
 
 const Destination: NextPage<destinationProps> = ({ destinations }) => {
   const router = useRouter()
-  const { destination, setDestination } = useContext(DestinationContext)
+  const [selectedIdx, setSelectedIdx] = useState(0)
 
   const tabChangeHandler = (idx: number) => {
-    if (!setDestination) return
-    const destName = destinations[idx].name
-
-    router.replace("/destination?destination=" + destName)
-    setDestination({
-      idx,
-      name: destName,
-    })
+    setSelectedIdx(idx)
   }
   return (
     <main className="w-full">
@@ -47,8 +34,8 @@ const Destination: NextPage<destinationProps> = ({ destinations }) => {
         <div className="xm:flex xm:gap-14 justify-between items-center">
           <div className="aspect-square w-[10.625rem] relative mx-auto mb-6  md:w-[18.75rem] md:mb-14 xm:w-[23.81rem] xm:flex-shrink-0 xm:items-center lg:w-[27.81rem]">
             <Image
-              src={destinations[destination.idx].images.png}
-              alt={destinations[destination.idx].name}
+              src={destinations[selectedIdx].images.png}
+              alt={destinations[selectedIdx].name}
               layout="fill"
             />
           </div>
@@ -117,13 +104,11 @@ const Destination: NextPage<destinationProps> = ({ destinations }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await readFile(join(__dirname, "..", "data.json"))
-
-  const data = await JSON.parse(res.toString()).destinations
+  const data = await getData()
 
   return {
     props: {
-      destinations: data,
+      destinations: data.destinations,
     },
   }
 }

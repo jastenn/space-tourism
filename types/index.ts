@@ -8,3 +8,14 @@ export interface Destination {
   distance: string
   travel: string
 }
+
+export interface Crew {
+  name: string
+  images: {
+    png: string
+    webp: string
+  }
+  description: string
+  role: string
+  bio: string
+}
