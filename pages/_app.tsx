@@ -2,6 +2,7 @@ import "../styles/globals.css"
 import type { AppProps } from "next/app"
 import Navigation from "../components/Navigation"
 import { useRouter } from "next/router"
+import DestinationContextProvider from "../context/DestinationContextProvider"
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -17,14 +18,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }
   return (
-    <div
-      className={`overflow-x-hidden relative min-h-screen font-sans text-base bg-cinder text-white ${getBgImage()} bg-no-repeat bg-cover bg-center`}
-    >
-      <Navigation />
-      <div className="max-w-[69.375rem] min-h-80vh flex items-center w-[87%] mx-auto">
-        <Component {...pageProps} />
+    <DestinationContextProvider>
+      <div
+        className={`overflow-x-hidden relative min-h-screen font-sans text-base bg-cinder text-white ${getBgImage()} bg-no-repeat bg-cover bg-center`}
+      >
+        <Navigation />
+        <div className="max-w-[69.375rem] min-h-80vh flex items-center w-[87%] mx-auto">
+          <Component {...pageProps} />
+        </div>
       </div>
-    </div>
+    </DestinationContextProvider>
   )
 }
 

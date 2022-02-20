@@ -1,4 +1,13 @@
-import React, { FC, Fragment, useEffect, useRef, useState } from "react"
+import React, {
+  FC,
+  Fragment,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
+
+import { DestinationContext } from "../context/DestinationContextProvider"
 
 import minTwoDigitInt from "../utils/minTwoDigitInt"
 import { useRouter } from "next/router"
@@ -47,6 +56,7 @@ const Navigation: FC<NavigationProps> = ({ navItems = defaultNavItems }) => {
       setOpen(false)
     },
   })
+  const { destination } = useContext(DestinationContext)
 
   const [open, setOpen] = useState(false)
 
@@ -62,6 +72,13 @@ const Navigation: FC<NavigationProps> = ({ navItems = defaultNavItems }) => {
   const navigateHandler = () => {
     setOpen(false)
   }
+
+  const addQueryParams = (route: string) => {
+    if (route === "/" || !destination) return route
+
+    return route + "?destination=" + destination.name
+  }
+
   useEffect(() => {
     if (open) closeBtnRef.current?.focus()
   }, [open])
@@ -126,7 +143,7 @@ const Navigation: FC<NavigationProps> = ({ navItems = defaultNavItems }) => {
             <ul className="flex gap-8 flex-col pl-8 md:flex-row mt-28 md:mt-0 md:gap-9 md:pl-10 xm:ml-7 lg:ml-14 xl:ml-20">
               {navItems.map((navItem, idx) => (
                 <li key={navItem.name} className="relative list-none md:py-9">
-                  <Link href={navItem.url}>
+                  <Link href={addQueryParams(navItem.url)}>
                     <a
                       onClick={navigateHandler}
                       className="peer focus:outline-none font-sans-condensed text-base pl-6 inline-block uppercase tracking-widest md:pl-0 md:text-sm xm:text-base xm:flex"

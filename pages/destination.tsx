@@ -4,23 +4,33 @@ import { fileURLToPath } from "url"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-import React, { useState, Fragment } from "react"
+import React, { useState, Fragment, useContext } from "react"
 import type { Destination } from "../types"
 
 import Image from "next/image"
 
 import { Tab, Transition } from "@headlessui/react"
 import { GetStaticProps, NextPage } from "next"
+import { DestinationContext } from "../context/DestinationContextProvider"
+import { useRouter } from "next/router"
 
 interface destinationProps {
   destinations: Destination[]
 }
 
 const Destination: NextPage<destinationProps> = ({ destinations }) => {
-  const [selectedTab, setSelectedTab] = useState(0)
+  const router = useRouter()
+  const { destination, setDestination } = useContext(DestinationContext)
 
   const tabChangeHandler = (idx: number) => {
-    setSelectedTab(idx)
+    if (!setDestination) return
+    const destName = destinations[idx].name
+
+    router.replace("/destination?destination=" + destName)
+    setDestination({
+      idx,
+      name: destName,
+    })
   }
   return (
     <main className="w-full">
@@ -37,9 +47,10 @@ const Destination: NextPage<destinationProps> = ({ destinations }) => {
         <div className="xm:flex xm:gap-14 justify-between items-center">
           <div className="aspect-square w-[10.625rem] relative mx-auto mb-6  md:w-[18.75rem] md:mb-14 xm:w-[23.81rem] xm:flex-shrink-0 xm:items-center lg:w-[27.81rem]">
             <Image
-              src={destinations[selectedTab].images.png}
-              alt={destinations[selectedTab].name}
+              src={destinations[destination.idx].images.png}
+              alt={destinations[destination.idx].name}
               layout="fill"
+              priority
             />
           </div>
           <div className="xm:max-w-[27.81rem]">
