@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         </p>
         <button
           name="start exploration"
-          className="font-serif uppercase text-xl text-cinder h-[9.38rem] md:h-[15.13rem] bg-white aspect-square flex items-center justify-center rounded-full mx-auto hover:ring-white/10 transition-shadow hover:ring-15 md:hover:ring-20 xm:hidden "
+          className="font-serif uppercase text-xl text-cinder h-[9.38rem] md:h-[15.13rem] bg-white aspect-square flex items-center justify-center rounded-full mx-auto hover:ring-white/10 transition-shadow hover:ring-15 focus:ring-15 focus:ring-white/10 focus:outline-none motion-reduce:transition-none md:hover:ring-20 xm:hidden "
           type="button"
           onClick={startExplorationHandler}
         >
