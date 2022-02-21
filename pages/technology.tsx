@@ -64,10 +64,10 @@ const Technology: NextPage<TechnologyProps> = ({ technologies }) => {
                   <Tab as={Fragment} key={technology.name}>
                     {({ selected }) => (
                       <button
-                        className={`aspect-square h-10 font-serif rounded-full text-base md:h-15 xm:h-16 lg:h-20 ${
+                        className={`aspect-square h-10 font-serif rounded-full text-base md:h-15 xm:h-16 lg:h-20 transition-colors ${
                           selected
                             ? "bg-white text-cinder"
-                            : "ring-1 ring-inset ring-white/20 text-white"
+                            : "ring-1 ring-inset ring-white/20 text-white hover:ring-white"
                         }`}
                       >
                         {i + 1}

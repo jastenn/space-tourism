@@ -1,6 +1,12 @@
-import type { NextPage } from "next"
+import { useRouter } from "next/router"
+import type { NextPage } from "next/types"
 
 const Home: NextPage = () => {
+  const router = useRouter()
+  const startExplorationHandler = () => {
+    router.push("/destination")
+  }
+
   return (
     <main className="mt-6 w-full mb-20 md:mb-24 md:mt-[6.625rem] xm:mt-44 lg:mt-60 xm:mb-[unset]">
       <article className="text-center mx-auto max-w-[28.13rem] xm:text-left xm:mx-[unset] xm:mr-auto">
@@ -20,6 +26,7 @@ const Home: NextPage = () => {
           name="start exploration"
           className="font-serif uppercase text-xl text-cinder h-[9.38rem] md:h-[15.13rem] bg-white aspect-square flex items-center justify-center rounded-full mx-auto hover:ring-white/10 transition-shadow hover:ring-15 md:hover:ring-20 xm:hidden "
           type="button"
+          onClick={startExplorationHandler}
         >
           explore
         </button>
