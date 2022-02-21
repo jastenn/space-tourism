@@ -46,6 +46,10 @@ module.exports = {
         fog: "#D0D6F9",
       },
       backgroundImage: {
+        "tech-lg": "url('/image/technology/background-technology-desktop.jpg')",
+        "tech-md": "url('/image/technology/background-technology-tablet.jpg')",
+        "tech-sm": "url('/image/technology/background-technology-mobile.jpg')",
+
         "crew-lg": "url('/image/crew/background-crew-desktop.jpg')",
         "crew-md": "url('/image/crew/background-crew-tablet.jpg')",
         "crew-sm": "url('/image/crew/background-crew-mobile.jpg')",

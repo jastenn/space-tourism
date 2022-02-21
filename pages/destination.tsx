@@ -14,10 +14,10 @@ interface destinationProps {
 
 const Destination: NextPage<destinationProps> = ({ destinations }) => {
   const router = useRouter()
-  const [selectedIdx, setSelectedIdx] = useState(0)
+  const [selectedTab, setSelectedTab] = useState(0)
 
   const tabChangeHandler = (idx: number) => {
-    setSelectedIdx(idx)
+    setSelectedTab(idx)
   }
   return (
     <main className="w-full">
@@ -34,8 +34,9 @@ const Destination: NextPage<destinationProps> = ({ destinations }) => {
         <div className="xm:flex xm:gap-14 justify-between items-center">
           <div className="aspect-square w-[10.625rem] relative mx-auto mb-6  md:w-[18.75rem] md:mb-14 xm:w-[23.81rem] xm:flex-shrink-0 xm:items-center lg:w-[27.81rem]">
             <Image
-              src={destinations[selectedIdx].images.png}
-              alt={destinations[selectedIdx].name}
+              aria-live="polite"
+              src={destinations[selectedTab].images.png}
+              alt={destinations[selectedTab].name}
               layout="fill"
             />
           </div>
@@ -73,7 +74,7 @@ const Destination: NextPage<destinationProps> = ({ destinations }) => {
                       <h1 className="font-serif uppercase text-5xl leading-tight md:text-7xl xm:text-8xl">
                         {destination.name}
                       </h1>
-                      <p className="text-fog text-[0.9375rem] leading-relaxed md:text-base xm:text-lg">
+                      <p className="text-fog text-[0.9375rem] leading-relaxed md:text-base md:leading-relaxed xm:text-lg">
                         {destination.description}
                       </p>
                     </div>

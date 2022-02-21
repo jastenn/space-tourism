@@ -14,6 +14,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         return "bg-destination-sm md:bg-destination-md xm:bg-destination-lg"
       case "/crew":
         return "bg-crew-sm md:bg-crew-md xm:bg-crew-lg"
+      case "/technology":
+        return "bg-tech-sm md:bg-tech-md xm:bg-tech-lg"
       default:
         return "bg-none"
     }

@@ -10,10 +10,10 @@ interface CrewProps {
   crews: Crew[]
 }
 const Crew = ({ crews }: CrewProps) => {
-  const [selectedIdx, setSelectedIdx] = useState(0)
+  const [selectedTab, setSelectedTab] = useState(0)
 
   const tabChangeHandler = (idx: number) => {
-    setSelectedIdx(idx)
+    setSelectedTab(idx)
   }
 
   return (
@@ -31,11 +31,11 @@ const Crew = ({ crews }: CrewProps) => {
         <div className="md:flex md:flex-col xm:flex-row xm:item-center xm:justify-between xm:gap-8">
           <div className="relative h-56 w-full mb-8 after:content-[''] after:w-full after:h-[1px] after:bg-white/20 after:absolute after:bottom-0 after:inset-x-0 md:order-3 md:after:hidden md:mb-0 md:h-[33.25rem] xm:mb-0 xm:after:block xm:w-40%">
             <Image
-              src={crews[selectedIdx].images.png}
-              sizes="222 370px 575"
+              aria-live="polite"
+              src={crews[selectedTab].images.png}
               layout="fill"
               objectFit="contain"
-              alt={crews[selectedIdx].name}
+              alt={crews[selectedTab].name}
             />
           </div>
           <div className="w-full md:flex md:flex-col md:mb-10 xm:max-w-[unset] xm:justify-center xm:mb-0 xm:w-full">
@@ -69,7 +69,7 @@ const Crew = ({ crews }: CrewProps) => {
                     <h1 className="font-serif text-3xl uppercase mb-6 md:text-[2.5rem] xm:text-5xl leading-none">
                       {crew.name}
                     </h1>
-                    <p className="max-w-[27.75rem] mx-auto text-fog text-[.9375rem] md:text-base leading-relaxed xm:mx-0">
+                    <p className="max-w-[27.75rem] mx-auto text-fog text-[.9375rem] leading-relaxed md:text-base md:leading-relaxed xm:mx-0 xm:text-lg">
                       {crew.bio}
                     </p>
                   </Tab.Panel>
