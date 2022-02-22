@@ -5,6 +5,7 @@ import getData from "../utils/getData"
 import { Crew } from "../types"
 import { Tab } from "@headlessui/react"
 import Image from "next/image"
+import Head from "next/head"
 
 interface CrewProps {
   crews: Crew[]
@@ -18,6 +19,9 @@ const Crew = ({ crews }: CrewProps) => {
 
   return (
     <main className="w-full">
+      <Head>
+        <title>Space Tourism | Crew</title>
+      </Head>
       <article className="text-center mb-14 xm:text-left md:mb-0">
         <h3 className="font-sans-condensed uppercase tracking-widest flex items-baseline justify-center mb-8 md:text-xl md:justify-start md:mt-10 md:mb-15">
           <span
@@ -51,7 +55,7 @@ const Crew = ({ crews }: CrewProps) => {
                     hover:bg-white/50 transition-colors
                     `}
                       >
-                        <div className="sr-only">{crew.name}</div>
+                        <span className="sr-only">{crew.name}</span>
                       </button>
                     )}
                   </Tab>

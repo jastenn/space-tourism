@@ -8,6 +8,7 @@ import useDisableScrollOnArrow from "../hooks/useDisableScrollOnArrow"
 
 import { Tab } from "@headlessui/react"
 import Image from "next/image"
+import Head from "next/head"
 
 interface TechnologyProps {
   technologies: Technology[]
@@ -23,6 +24,9 @@ const Technology: NextPage<TechnologyProps> = ({ technologies }) => {
   }
   return (
     <main className="w-full">
+      <Head>
+        <title>Space Tourism | Destination</title>
+      </Head>
       <article className="text-center mb-14 xm:text-left md:mb-0">
         <h3 className="font-sans-condensed uppercase tracking-widest flex items-baseline justify-center mb-8 md:text-xl md:justify-start md:mt-10 md:mb-15">
           <span

@@ -7,6 +7,7 @@ import { Tab, Transition } from "@headlessui/react"
 import { GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
 import getData from "../utils/getData"
+import Head from "next/head"
 
 interface destinationProps {
   destinations: Destination[]
@@ -21,6 +22,9 @@ const Destination: NextPage<destinationProps> = ({ destinations }) => {
   }
   return (
     <main className="w-full">
+      <Head>
+        <title>Space Tourism | Destination</title>
+      </Head>
       <article className="text-center mb-14 xm:text-left md:mb-0">
         <h3 className="font-sans-condensed uppercase tracking-widest flex items-baseline justify-center mb-8 md:text-xl md:justify-start md:mt-10 md:mb-14">
           <span
