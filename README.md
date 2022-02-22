@@ -27,7 +27,7 @@ Users should be able to:
 ### Screenshot
 
 ![Mobile view](https://i.ibb.co/1QH2QQQ/Screenshot-2022-02-22-at-09-29-48-Screenshot.png)
-![Desktop view](https://i.ibb.co/j5PRw69/Screenshot-2022-02-22-at-09-30-01-Screenshot.png)
+![Desktop view](https://i.ibb.co/x20jx7p/Screenshot-2022-02-22-at-10-09-17-Space-Tourism-Home.png)
 
 ### Links
 
